@@ -42,33 +42,4 @@ describe('immutability', () => {
 
   });
 
-  describe('a tree', () => {
-
-    function addTitle(currentState, title) {
-      return currentState.update('titles', titles => titles.push(title));
-    }
-
-    it('is immutable', () => {
-      let state = Map({
-        titles: List.of('ProductName', 'Price')
-      });
-      let nextState = addTitle(state, 'Quantity');
-
-      expect(nextState).to.equal(Map({
-        titles: List.of(
-          'ProductName',
-          'Price',
-          'Quantity'
-        )
-      }));
-      expect(state).to.equal(Map({
-        titles: List.of(
-          'ProductName',
-          'Price'
-        )
-      }));
-    });
-
-  });
-
 });
