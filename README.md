@@ -2,37 +2,56 @@
 
 ### Getting Started ###
 
+```
 > git clone https://github.com/invoice-creator/invoiced
 > cd invoiced
+> npm install
+
+```
 
 ### Server Commands ###
 
 To run server:
 
+```
 > cd server
 > npm run start
 
+```
+
 To run server side tests:
 
+```
 > cd server
 > npm run test
 
+```
+
 To watch for changes in server side tests:
 
+```
 > cd server 
 > npm run test:watch
+
+```
 
 ### Client Commands ###
 
 To run client side tests:
 
+```
 > cd client
 > npm run test
 
+```
+
 To watch for changes in client side tests:
 
+```
 > cd client 
 > npm run test:watch
+
+```
 
 ### Application immutable state tree: ###
 
