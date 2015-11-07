@@ -22,6 +22,20 @@
 
 ```
 
+### Client Components and Separation of State ###
+
+```
+When React components are combined with Redux and Immutable all components become so-called Pure Components (also sometimes called "Dumb Components"). As a concept, this is similar to pure functions, in that there are a couple of rules to follow:
+
+1. A pure component receives all its data as props, like a function receives all its data as arguments. It should have no side effects, including reading data from anywhere else, initiating network requests, etc.
+
+2. A pure component generally has no internal state. What it renders is fully driven by its input props. Rendering the same pure component twice with the same props should result in the same UI. There's no hidden state inside the component that would cause the UI to differ between the two renders.
+This has a similar simplifying effect as using pure functions does: We can figure out what a component does by looking at what it receives as inputs and what it renders. There's nothing else we need to know about the component. It can also be tested rather easily.
+
+3. The state lives in an immutable data structure inside of a Redux store. Redux allows us the ability to separate the state from the UI code. React components become a stateless projection of the state at a given point in time.
+
+```
+
 ### Server Commands ###
 
 To run server:
