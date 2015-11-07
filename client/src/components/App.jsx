@@ -1,5 +1,5 @@
 import React from 'react';
-import {List} from 'immutable';
+import {List, Map} from 'immutable';
 
 const products = List.of('Body Wash', 'Hand Soap');
 
