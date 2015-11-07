@@ -64,6 +64,22 @@ To watch for changes in server side tests:
 
 ### Client Commands ###
 
+To build bundle.js into client/dist:
+
+```
+> cd client
+> webpack
+
+```
+
+To run webpack dev server with hot reload:
+
+```
+> cd client
+> webpack-dev-server
+
+```
+
 To run client side tests:
 
 ```
