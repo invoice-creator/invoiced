@@ -5,6 +5,9 @@
 ```
 > git clone https://github.com/invoice-creator/invoiced
 > cd invoiced
+> cd server
+> npm install
+> cd client
 > npm install
 
 ```
