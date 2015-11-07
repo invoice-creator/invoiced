@@ -39,6 +39,29 @@ This has a similar simplifying effect as using pure functions does: We can figur
 
 ```
 
+### Getting Data In From Redux to React ###
+
+```
+The Redux Store that holds our immutable application state. Stateless React components that take immutable data as inputs.
+
+Wrapping our top-level application component inside a react-redux Provider component will connect our component tree to a Redux store, enabling us to make the mappings for individual components later. Placing the <Provider></Provider> element around the <Router></Router> component in index.jsx will  cause the Provider to be an ancestor to all of our application components. For example: 
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Router>{routes}</Router>
+  </Provider>,
+  document.getElementById('app')
+);
+
+Using react-redux we take the pure components and wire them up into a Redux Store by doing three things:
+
+1. Mapping the Store state into component input props
+2. Mapping actions into component output callback props
+
+Next, determine which of the components need to be "wired up" so that all the data will come from the Store. The App.jsx component does not use any data so it will not need anything.
+
+```
+
 ### Server Commands ###
 
 To run server:
