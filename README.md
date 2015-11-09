@@ -9,7 +9,6 @@
 > npm install
 > cd client
 > npm install
-
 ```
 
 ### Redux Server Operation Process ###
@@ -41,7 +40,6 @@ To build bundle.js into client/dist:
 ```
 > cd client
 > webpack
-
 ```
 
 To run webpack dev server with hot reload:
@@ -49,7 +47,6 @@ To run webpack dev server with hot reload:
 ```
 > cd client
 > webpack-dev-server
-
 ```
 
 To run client side tests:
@@ -57,7 +54,6 @@ To run client side tests:
 ```
 > cd client
 > npm run test
-
 ```
 
 To watch for changes in client side tests:
@@ -65,17 +61,14 @@ To watch for changes in client side tests:
 ```
 > cd client 
 > npm run test:watch
-
 ```
 
 ### Server Commands ###
 
 To run server:
-
 ```
 > cd server
 > npm run start
-
 ```
 
 To run server side tests:
@@ -83,7 +76,6 @@ To run server side tests:
 ```
 > cd server
 > npm run test
-
 ```
 
 To watch for changes in server side tests:
@@ -91,7 +83,6 @@ To watch for changes in server side tests:
 ```
 > cd server 
 > npm run test:watch
-
 ```
 
 ### Client Getting Data In From Redux to React ###
@@ -133,23 +124,22 @@ export const Invoice = React.createClass({
 });
 
 export const InvoiceContainer = connect(mapStateToProps)(Invoice);
-
+```
 Then in src/index.jsx:
 
+```
 import {InvoiceContainer} from './components/Invoice';
 
 const routes = <Route component={App}>
   <Route path="/results" component={ProductSearch} />
   <Route path="/" component={InvoiceContainer} />
 </Route>;
-
 ```
 
 Note that in test/Invoice_spec.jsx we will need to change the way the import is done as Invoice is no longer the default export option from src/components/Invoice.jsx:
 
 ```
 import {Invoice} from '../../src/components/Invoice'; 
-
 ```
 
 ### Setting Up The Socket.io Client ###
@@ -160,7 +150,6 @@ The server is prepared to take incoming socket connections and emit the voting s
 import io from 'socket.io-client';
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
-
 ```
 
 Note that during development there will actually be two Socket.io connections on the page. One is ours and the other is supporting Webpack's hot reloading.
@@ -173,7 +162,6 @@ The server sends our client state events - once when we connect and then every t
 socket.on('state', state =>
   store.dispatch({type: 'SET_STATE', state})
 );
-
 ```
 
 ### Dispatching Actions Out from the Client ###
@@ -193,33 +181,28 @@ export function setState(state) {
     state
   };
 }
-
 ```
 
 Then, in client/src/index.jsx we import the setState function from the action_creators file. 
 
 ```
-
 import {setState} from './action_creators';
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
 socket.on('state', state =>
   store.dispatch(setState(state))
 );
-
 ```
 
  Finally, give our action creators to the react-redux connect function as the second argument to each component that uses the connect function, and the connection will be made. In client/src/components/Invoice.jsx:
 
 ```
-
 import * as actionCreators from '../action_creators';
 
 export const InvoiceContainer = connect(
   mapStateToProps,
   actionCreators
 )(Invoice);
-
 ```
 
 ### Sending Actions To The Server Using Redux Middleware ###
@@ -236,13 +219,11 @@ We create a "remote action middleware" that causes an action to be dispatched no
 export default store => next => action => {
 
 }
-
 ```
 
 The code above may look a bit foreign but it's really just a more concise way of expressing this:
 
 ```
-
 export default function(store) {
   return function(next) {
     return function(action) {
@@ -250,7 +231,6 @@ export default function(store) {
     }
   }
 }
-
 ```
 
 This style of nesting single-argument functions is called currying. In this case it's used so that the Middleware is easily configurable: If we had all the arguments in just one function (function(store, next, action) { }) we'd also have to supply all the arguments every time the middleware is used. With the curried version we can call the outermost function once, and get a return value that "remembers" which store to use. The same goes for the next argument.
@@ -258,14 +238,12 @@ This style of nesting single-argument functions is called currying. In this case
 The next argument is a callback that the middleware should call when it has done its work and the action should be sent to the store (or the next middleware). In our case the middleware should send a given action to a Socket.io connection, in addition to giving it to the next middleware. The socket.emit function emits an action event from the middleware. We can extend the middleware to only send certain actions to the server. Concretely, we should only send out actions that have a {meta: {remote: true}} property attached. In client/src/remote_action_middleware.js:
 
 ```
-
 export default socket => store => next => action => {
   if (action.meta && action.meta.remote) {
     socket.emit('action', action);
   }
   return next(action);
 }
-
 ```
 
 Note: the middleware could also decide not to call next, if it decided that the action should be halted. In that case it would never go into the reducer or the store.
@@ -273,7 +251,6 @@ Note: the middleware could also decide not to call next, if it decided that the 
 We will then want to update each action creator we actually want to send to the server. For example, the action creator for INVOICED should now set this property, where as the one for SET_STATE should not in client/src/action_creators.js:
 
 ```
-
 export function setState(state) {
   return {
     type: 'SET_STATE',
@@ -288,13 +265,11 @@ export function invoiced(product) {
     product
   };
 }
-
 ```
 
 Next the middleware gets plugged into our Redux store, all actions should get logged. The middleware can be activated using an applyMiddleware function that Redux ships with. It takes the middleware we want to register, and returns a function that takes the createStore function. That second function will then create a store for us that has the middleware included in it. In client/src/components/index.jsx:
 
 ```
-
 import remoteActionMiddleware from './remote_action_middleware';
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
@@ -306,7 +281,6 @@ const createStoreWithMiddleware = applyMiddleware(
   remoteActionMiddleware(socket)
 )(createStore);
 const store = createStoreWithMiddleware(reducer);
-
 ```
 
 Note: the socket connection above needs to be created before the middleware gets used as it relies on having a socket connection.
