@@ -14,7 +14,6 @@
 
 ### Redux Server Operation Process ###
 
-```
 1. A client sends an action to the server
 2. The server hands the action to the Redux Store
 3. The Store calls the reducer and the reducer executes the logic related to the action
@@ -23,11 +22,9 @@
 6. The server emits a 'state' event
 7. All connected clients - including the one that initiated the original action - receive the new state
 
-```
 
 ### Redux Client Operation Process ### 
 
-```
 1. The user creates some action via interaction. An action is dispatched
 2. The remote action middleware sends the action over the Socket.io connection
 3. The client-side Redux store handles the action, causing the local state to be set for that action
@@ -36,7 +33,6 @@
 6. A SET_STATE action is dispatched to the Redux store of every connected client
 7. The Redux store of every connected client handles the SET_STATE action with the updated state from the server
 
-```
 
 ### Client Commands ###
 
@@ -115,6 +111,7 @@ This has a similar simplifying effect as using pure functions does: We can figur
 ### Client Getting Data In From Redux to React ###
 
 ```
+
 The Redux Store that holds our immutable application state. Stateless React components that take immutable data as inputs.
 
 Wrapping our top-level application component inside a react-redux Provider component will connect our component tree to a Redux store, enabling us to make the mappings for individual components later. Placing the <Provider></Provider> element around the <Router></Router> component in index.jsx will  cause the Provider to be an ancestor to all of our application components. For example: 
