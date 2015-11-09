@@ -156,12 +156,14 @@ import {Invoice} from '../../src/components/Invoice';
 
 The server is prepared to take incoming socket connections and emit the voting state to them. The client, on the other hand, has a Redux store into which we could easily dispatch incoming data. To draw the connection we use socket.io-client, which gives us io function that can be used to connect to a Socket.io server. In client/src/index.jsx:
 
+```
 import io from 'socket.io-client';
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
 
-Note that during development there will actually be two Socket.io connections on the page. One is ours and the other is supporting Webpack's hot reloading.
+```
 
+Note that during development there will actually be two Socket.io connections on the page. One is ours and the other is supporting Webpack's hot reloading.
 
 ### Receiving Actions From the Server ###
 
