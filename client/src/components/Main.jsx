@@ -70,10 +70,10 @@ export const Main = React.createClass({
         <ProductSearchContainer handleInvoiceProductClick={this.handleInvoiceProductClick} />
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>Your Invoice</Modal.Title>
+            <Modal.Title>SteelBrick Invoice</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Invoice</h4>
+            <h4>Your Invoice</h4>
             <hr />
             <h4>Invoice Information</h4>
             <p>{this.state.customerName}</p>
