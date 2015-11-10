@@ -27,4 +27,21 @@ describe('application logic', () => {
 
   });
 
+  describe('next', () => {
+
+    it('takes the selected products and moves them under invoiced', () => {
+      const state = Map({
+        products: List.of('Body Wash', 'Hand Soap', 'Shampoo')
+      });
+      const nextState = next(state);
+      expect(nextState).to.equal(Map({
+        invoiced: Map({
+          invoiceProducts: List.of('Body Wash', 'Hand Soap');
+        }),
+        products: List.of('Shampoo')
+      }));
+    });
+    
+  });
+
 });
