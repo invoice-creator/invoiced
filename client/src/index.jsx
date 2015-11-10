@@ -10,6 +10,8 @@ import remoteActionMiddleware from './remote_action_middleware';
 import App from './components/App';
 import {InvoiceContainer} from './components/Invoice';
 import {ProductSearchContainer} from './components/ProductSearch';
+import {InvoiceTemplateContainer} from './components/InvoiceTemplate';
+import {MainContainer} from './components/Main';
 
 const socket = io(`${location.protocol}//${location.hostname}:8090`);
 socket.on('state', state =>
@@ -23,7 +25,8 @@ const store = createStoreWithMiddleware(reducer);
 
 const routes = <Route component={App}>
   <Route path="/products" component={ProductSearchContainer} />
-  <Route path="/" component={InvoiceContainer} />
+  <Route path="/invoice" component={InvoiceContainer} />
+  <Route path="/" component={MainContainer} />
 </Route>;
 
 ReactDOM.render(
