@@ -103,7 +103,7 @@ When product line items are added to an invoice the state should reflect the cha
 
 ### Client Getting Data In From Redux to React ###
 
-The Redux Store that holds our immutable application state.
+The Redux Store holds our immutable application state.
 
 Wrapping our top-level application component inside a react-redux Provider component will connect our component tree to a Redux store, enabling us to make the mappings for individual components later. Placing the <Provider></Provider> element around the <Router></Router> component in index.jsx will  cause the Provider to be an ancestor to all of our application components. For example: 
 
