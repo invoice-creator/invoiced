@@ -22,7 +22,7 @@
 7. All connected clients - including the one that initiated the original action - receive the new state
 
 
-### Redux Client Operation Process ### 
+### Redux Client Operation Process ###
 
 1. The user creates some action via interaction. An action is dispatched
 2. The remote action middleware sends the action over the Socket.io connection
