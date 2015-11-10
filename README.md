@@ -93,7 +93,9 @@ To watch for changes in server side tests:
 
 ![alt tag](assets/product-line-items.png)
 
-### When product line items are added to an invoice the state should reflect the changes and the items should be listed in the invoiced products section, which shows up on the actual invoice: ###
+### Invoicing Product Items ###
+
+When product line items are added to an invoice the state should reflect the changes and the items should be listed in the invoiced products section, which shows up on the actual invoice.
 
 ![alt tag](assets/invoiced-products.png)
 
