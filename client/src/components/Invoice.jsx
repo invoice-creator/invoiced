@@ -34,7 +34,7 @@ export const Invoice = React.createClass({
                 <div>
                   <label htmlFor="date">Date</label>
                   <input 
-                    type="text" 
+                    type="date" 
                     className="form-control" 
                     id="dateInput" 
                     placeholder="Date" 
