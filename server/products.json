@@ -1,12 +1,74 @@
- [
-    "Body Wash",
-    "Hand Soap",
-    "Shampoo",
-    "Conditioner",
-    "Toothbrush",
-    "Toothpaste",
-    "Toilet Paper",
-    "Paper Towels",
-    "Garbage Bags",
-    "Laundry Detergent"
- ]
+{
+  "products": [
+      {
+          "id": 1,
+          "product_name": "Body Wash",
+          "product_quantity": 3,
+          "product_price": "$4.99",
+          "product_total": "$14.97"
+      },
+      {
+          "id": 2,
+          "product_name": "Hand Soap",
+          "product_quantity": 8,
+          "product_price": "$2.99",
+          "product_total": "$23.92"
+      },
+      {
+          "id": 3,
+          "product_name": "Shampoo",
+          "product_quantity": 1,
+          "product_price": "$5.99",
+          "product_total": "$5.99"
+      },
+      {
+          "id": 4,
+          "product_name": "Conditioner",
+          "product_quantity": 1,
+          "product_price": "$5.99",
+          "product_total": "$5.99"
+      },
+      {
+          "id": 5,
+          "product_name": "Toothbrush",
+          "product_quantity": 1,
+          "product_price": "$1.99",
+          "product_total": "$1.99"
+      },
+      {
+          "id": 6,
+          "product_name": "Toothpaste",
+          "product_quantity": 1,
+          "product_price": "$4.99",
+          "product_total": "$4.99"
+      },
+      {
+          "id": 7,
+          "product_name": "Toilet Paper",
+          "product_quantity": 2,
+          "product_price": "$7.99",
+          "product_total": "$15.98"
+      },
+      {
+          "id": 8,
+          "product_name": "Paper Towels",
+          "product_quantity": 3,
+          "product_price": "$7.99",
+          "product_total": "$23.97"
+      },
+      {
+          "id": 9,
+          "product_name": "Garbage Bags",
+          "product_quantity": 1,
+          "product_price": "$12.99",
+          "product_total": "$12.99"
+      },
+      {
+          "id": 10,
+          "product_name": "Laundry Detergent",
+          "product_quantity": 1,
+          "product_price": "$15.99",
+          "product_total": "$15.99"
+      }
+  ]
+}
