@@ -85,6 +85,18 @@ To watch for changes in server side tests:
 > npm run test:watch
 ```
 
+### Application State Tree: ###
+
+![alt tag](assets/invoice-redux-state-tree.png)
+
+### State Tree for product line items: ###
+
+![alt tag](assets/product-line-items.png)
+
+### When product line items are added to an invoice the state should reflect the changes and the items should be listed in the invoiced products section, which shows up on the actual invoice: ###
+
+![alt tag](assets/invoiced-products.png)
+
 ### Client Getting Data In From Redux to React ###
 
 The Redux Store that holds our immutable application state.
@@ -284,17 +296,4 @@ const store = createStoreWithMiddleware(reducer);
 ```
 
 Note: the socket connection above needs to be created before the middleware gets used as it relies on having a socket connection.
-
-### Application Immutable State Tree: ###
-
-![alt tag](assets/invoice-redux-state-tree.png)
-
-### Immutable State Tree for product line items: ###
-
-![alt tag](assets/product-line-items.png)
-
-### When product line items are added to an invoice the state should reflect the changes and the items should no longer be listed in the products section, but instead on the actual invoice: ###
-
-![alt tag](assets/invoiced-products.png)
-
 
