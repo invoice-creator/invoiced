@@ -1,47 +1,42 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {connect} from 'react-redux';
 import * as actionCreators from '../action_creators';
 
 export const ProductSearch = React.createClass({
-  mixins: [PureRenderMixin],
   getProducts: function() {
-    console.log('props :', this.props);
-    console.log('props products: ', this.props.products);
     return this.props.products || [];
   },
+  getInvoicedProducts: function() {
+    return this.props.invoicedProducts || [];
+  },
   render: function() {
-    var products = this.props;
     return (
       <div className="container">
-        <div className="row">
+        <div className="row" id="productSelection">
           <div className="col-xs-12">
-            <h4>Create A Product</h4>
-            <form className="navbar-form navbar-right" onSubmit={this.createProductItem}>
-              <div className="form-group">
-                <input type="text" className="form-control" placeholder="Product Name" required />
-                <input type="number" className="form-control" placeholder="Quantity" required />
-                <input type="number" step="any" className="form-control" placeholder="Price" required />
-                <input type="number" className="form-control" placeholder="Total" required />
-              </div>
-              <button onSubmit={this.createProductItemData.bind(this)}>Create Product Item</button>
-            </form>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-xs-12">
-            <h4>Your Product Items</h4>
+            <h4>Select A Product To Invoice</h4>
             <div className="table-wrapper">
               <table className="table table-hover">
                 <thead>
-                  <tr>Product Name</tr>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                  </tr>
                 </thead>
                 <tbody>
                   {this.getProducts().map(product =>
                     <tr key={product}>
-                      <td>{product}</td>
+                      <td>{product.get("product_name")}</td>
+                      <td>{product.get("product_quantity")}</td>
+                      <td>{product.get("product_price")}</td>
+                      <td>{product.get("product_total")}</td>
                       <td>
-                        <button className="btn btn-default">Add Product Item</button>
+                        <button 
+                          className="btn btn-default"
+                          onClick={this.props.handleInvoiceProductClick.bind(null, product)}
+                        >Invoice Product</button>
                       </td>
                     </tr>
                   )}
@@ -52,15 +47,12 @@ export const ProductSearch = React.createClass({
         </div>
       </div>
     );
-  },
-  createProductItemData: function() {
-    console.log('in createProductItemData');
   }
 });
 
 function mapStateToProps(state) {
   return {
-    products: state.getIn(['products'])
+    products: state.get('products')
   }
 }
 
