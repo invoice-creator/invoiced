@@ -1,4 +1,6 @@
-### Invoiced is an invoicing application built using React, Node, Socket.io and Redux ###
+### Invoiced ###
+
+An invoicing application built using React, Node, Socket.io and Redux
 
 ### Getting Started ###
 
