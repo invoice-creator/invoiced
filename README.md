@@ -199,7 +199,7 @@ export function setState(state) {
 }
 ```
 
-Then, in client/src/index.jsx we import the setState function from the action_creators file. 
+Then, in client/src/index.jsx import the setState function from the action_creators file. 
 
 ```
 import {setState} from './action_creators';
@@ -210,7 +210,7 @@ socket.on('state', state =>
 );
 ```
 
- Finally, give our action creators to the react-redux connect function as the second argument to each component that uses the connect function, and the connection will be made. In client/src/components/Invoice.jsx:
+ Finally, give the action creators to the react-redux connect function as the second argument to each component that uses the connect function, and the connection will be made. In client/src/components/Invoice.jsx:
 
 ```
 import * as actionCreators from '../action_creators';
@@ -283,7 +283,7 @@ export function invoiced(product) {
 }
 ```
 
-Next the middleware gets plugged into our Redux store, all actions should get logged. The middleware can be activated using an applyMiddleware function that Redux ships with. It takes the middleware we want to register, and returns a function that takes the createStore function. That second function will then create a store for us that has the middleware included in it. In client/src/components/index.jsx:
+Next the middleware gets plugged into the Redux store, all actions should get logged. The middleware can be activated using an applyMiddleware function that Redux ships with. It takes the middleware we want to register, and returns a function that takes the createStore function. That second function will then create a store for us that has the middleware included in it. In client/src/components/index.jsx:
 
 ```
 import remoteActionMiddleware from './remote_action_middleware';
