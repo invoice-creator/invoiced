@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import * as actionCreators from '../action_creators';
 
 export const Invoice = React.createClass({
+  
   handleCustomerNameChange: function(event) {
     this.props.handleCustomerNameChange(event.target.value);
   },
@@ -12,9 +13,11 @@ export const Invoice = React.createClass({
   handleInvoiceNumberChange: function(event) {
     this.props.handleInvoiceNumberChange(event.target.value);
   },
+  
   getInvoicedProducts: function() {
     return this.props.invoicedProducts;
   },
+  
   render: function() {
     return (
       <div className="container">
@@ -87,6 +90,7 @@ export const Invoice = React.createClass({
       </div>
     );
   }
+  
 });
 
 function mapStateToProps(state) {
