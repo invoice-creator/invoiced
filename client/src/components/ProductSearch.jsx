@@ -3,12 +3,15 @@ import {connect} from 'react-redux';
 import * as actionCreators from '../action_creators';
 
 export const ProductSearch = React.createClass({
+  
   getProducts: function() {
     return this.props.products || [];
   },
+  
   getInvoicedProducts: function() {
     return this.props.invoicedProducts || [];
   },
+  
   render: function() {
     return (
       <div className="container">
@@ -48,6 +51,7 @@ export const ProductSearch = React.createClass({
       </div>
     );
   }
+  
 });
 
 function mapStateToProps(state) {
