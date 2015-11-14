@@ -6,6 +6,7 @@ import {ProductSearchContainer} from './ProductSearch';
 import {Modal} from 'react-bootstrap';
 
 export const Main = React.createClass({
+  
   getInitialState: function() {
     return {
       showModal: false,
@@ -15,39 +16,47 @@ export const Main = React.createClass({
       invoicedProducts: []
     };
   },
+  
   close: function() {
     this.setState({
       showModal: false
     });
   },
+  
   open: function() {
     this.setState({
       showModal: true
     });
   },
+  
   save: function() {
     {alert('You Have Saved Your Invoice!')}
   },
+  
   handleModalClick: function() {
     this.setState({
       showModal: true
     })
   },
+  
   handleCustomerNameChange: function(customerName) {
     this.setState({
       customerName: customerName
     });
   },
+  
   handleDateChange: function(date) {
     this.setState({
       date: date
     });
   },
+  
   handleInvoiceNumberChange: function(invoiceNumber) {
     this.setState({
       invoiceNumber: invoiceNumber
     });
   },
+  
   handleInvoiceProductClick: function(product) {
     var oldProducts = this.state.invoicedProducts.slice();
     oldProducts.push(product);
@@ -55,6 +64,7 @@ export const Main = React.createClass({
       invoicedProducts: oldProducts,
     });
   },
+  
   render: function() {
     var invoicedProducts = this.state.invoicedProducts;
     return (
@@ -97,6 +107,7 @@ export const Main = React.createClass({
       </div>
     );
   }
+  
 });
 
 function mapStateToProps(state) {
