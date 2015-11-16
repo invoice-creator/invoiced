@@ -114,7 +114,7 @@ ReactDOM.render(
   document.getElementById('app')
 );
 
-Using react-redux we take the pure components and wire them up into a Redux Store by doing three things:
+Using react-redux we take the pure components and wire them up into a Redux Store by doing two things:
 
 1. Mapping the Store state into component input props
 2. Mapping actions into component output callback props
