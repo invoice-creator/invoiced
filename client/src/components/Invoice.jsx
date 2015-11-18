@@ -7,9 +7,11 @@ export const Invoice = React.createClass({
   handleCustomerNameChange: function(event) {
     this.props.handleCustomerNameChange(event.target.value);
   },
+  
   handleDateChange: function(event) {
     this.props.handleDateChange(event.target.value);
   },
+  
   handleInvoiceNumberChange: function(event) {
     this.props.handleInvoiceNumberChange(event.target.value);
   },
